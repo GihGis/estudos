@@ -33,7 +33,7 @@ function tema_custom_settings(){
 ------
  //CALBACK
  
- function tema_home_imgs($urlsparasalvar){	 
+ function tema_home_imgs(){	 
 	    $urlsSalvas  = esc_attr( get_option( 'imagens_home' ) );
 	   
 	   	include( get_template_directory() . '/inc/templates/selecao-imagens.php');
