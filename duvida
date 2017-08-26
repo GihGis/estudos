@@ -1,0 +1,38 @@
+Estou aprendendo a usar Settings API do Wordpress, consigo criar páginas e subpaginas, campos salvar/atualizar no DB.
+
+Agora estou tentando aprender a integrar o slider do bootstrap ao API Settings, coloquei uma parte do código no Github:
+
+https://github.com/GihGis/estudos
+
+Todo o Jquery e seleção das imagens esta ok. Criando novos inputs conforme a quantidade de imagens selecionadas, cada campo é criado com o input name="my_image_URL[]".
+
+Minha dificuldade
+
+Não estou conseguindo pegar os names e colocar na variavel $urlsparasalvar 
+
+
+
+function tema_home_imgs(){	 
+	    $urlsSalvas  = esc_attr( get_option( 'imagens_home' ) );
+	   
+	   	include( get_template_directory() . '/inc/templates/selecao_imagens.php');
+
+		if ( isset( $_POST['my_image_URL'] ) ) {
+			$urlsparasalvar  = htmlspecialchars(json_encode($_POST['my_image_URL']));
+			
+		     echo '<input name="imagens_home" value="'.$urlsparasalvar .'" style="width:300px"/>';
+		}	
+ }
+ 
+ 
+
+Na função " tema_home_imgs()", quero colocar o array  $_POST['my_image_URL'] na variavel $urlsparasalvar.
+
+Logo apos eu converto esse array em JSON para salvar em unico input:
+
+
+$urlsparasalvar  = htmlspecialchars(json_encode($_POST['my_image_URL']));
+echo '<input name="imagens_home" value="'.$urlsparasalvar .'" style="width:300px"/>';
+
+
+Acontece que o array continua sempre vazio depois do submit, print_r ou var_dump retornam vazio.
