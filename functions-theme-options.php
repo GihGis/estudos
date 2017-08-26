@@ -22,14 +22,21 @@ function tema_custom_settings(){
 		 //string $args			 
 		 );
      
- ------
+ -------
  
+//CREATE PAGE
+  function theme_create_page(){
+	     require_once( get_template_directory() . '/inc/templates/form-options-admin.php');
+   }
+
+
+------
  //CALBACK
  
  function tema_home_imgs($urlsparasalvar){	 
 	    $urlsSalvas  = esc_attr( get_option( 'imagens_home' ) );
 	   
-	   	include( get_template_directory() . '/inc/templates/selecao_imagens.php');
+	   	include( get_template_directory() . '/inc/templates/selecao-imagens.php');
 
 	  	if ( isset( $_POST['my_image_URL'] ) ) {
 			$urlsparasalvar  = htmlspecialchars(json_encode($_POST['my_image_URL']));
