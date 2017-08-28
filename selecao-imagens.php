@@ -1,10 +1,9 @@
 <input id="my_upl_button" type="button" value="Escolher Imagens" /><br/>
-<input name="imagens_home" value="<?php echo $url;?>" style="width:300px"/>
 	<div class="row">
 			<div id="exibe" class="sortable">		
 			
 			<?php			
-			$urlsForeach  = json_decode($urlsSalvas , true);
+			$urlsForeach  = json_decode($UrlsSavedInDB , true);
 				if ($urlsForeach  != '' ) {
 				foreach ($urlsForeach  as $url) { 
 			 ?>			 
