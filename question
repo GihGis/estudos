@@ -1,32 +1,32 @@
 I’m learning how to use WordPress Settings API, I can create pages and sub-pages, save/update fields in DB.
 
-Now I’m trying to learn how to integrate the bootstrap slider into the API Settings, put some of the code on Github:
+Now I’m trying to learn how to integrate the bootstrap slider into the API Settings. I put some of the code on Github:
 
 https://github.com/GihGis/estudos
 
-All the Jquery and selection of the images is ok. By creating new inputs according to the number of images selected, each field is created with the input name="my_image_URL []".
+All the Jquery and selection of the images is ok. New inputs are created dynamically when images are selected. Each field is created with the input `name="my_image_URL[]"`.
 
 My difficulty
 
-I am not getting the names and put in the variable $urlsparasalvar
+I am not getting the names and put in the variable $UrlsToSave
 
-function tema_home_imgs(){	 
-	    $urlsSalvas  = esc_attr( get_option( 'imagens_home' ) );
-	   
-	   	include( get_template_directory() . '/inc/templates/selecao_imagens.php');
+    function tema_home_imgs(){	 
+    	    $UrlsSavedInDB = esc_attr( get_option( 'imagens_home' ) );
+    	   
+    	   	include( get_template_directory() . '/inc/templates/selecao_imagens.php');
+    
+    		if ( isset( $_POST['my_image_URL'] ) ) {
+    			$UrlsToSave= htmlspecialchars(json_encode($_POST['my_image_URL']));
+    			
+    		     echo '<input name="imagens_home" value="'.$UrlsToSave.'" style="width:300px"/>';
+    		}	
+     }
 
-		if ( isset( $_POST['my_image_URL'] ) ) {
-			$urlsparasalvar  = htmlspecialchars(json_encode($_POST['my_image_URL']));
-			
-		     echo '<input name="imagens_home" value="'.$urlsparasalvar .'" style="width:300px"/>';
-		}	
- }
- 
-In the theme_home_imgs() function, I want to put the $ _POST ['my_image_URL'] array in the variable $urlsparasalvar.
+In the `theme_home_imgs()` function, I want to put the `$ _POST['my_image_URL']` array in the variable `$UrlsToSave`.
 
-Soon after I convert this array into JSON to save in single input:
+Soon after I convert this array into JSON to save in single input of settings API:
 
-$Urlsparasalvar = htmlspecialchars (json_encode ($ _ POST ['my_image_URL']));
-Echo '<input name="image_home" value="'. $Urlsparasalvar. '" Style="width: 300px" />';
+    $UrlsToSave= htmlspecialchars (json_encode ($ _ POST ['my_image_URL']));
+    Echo '<input name="image_home" value="'.$UrlsToSave. '" Style="width: 300px" />';
 
 It turns out that the array always remains empty after the submit, print_r or var_dump return empty.
