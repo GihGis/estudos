@@ -34,14 +34,14 @@ function tema_custom_settings(){
  //CALBACK
  
  function tema_home_imgs(){	 
-	    $urlsSalvas  = esc_attr( get_option( 'imagens_home' ) );
+	    $UrlsSavedInDB  = esc_attr( get_option( 'imagens_home' ) );
 	   
 	   	include( get_template_directory() . '/inc/templates/selecao-imagens.php');
 
 	  	if ( isset( $_POST['my_image_URL'] ) ) {
-			$urlsparasalvar  = htmlspecialchars(json_encode($_POST['my_image_URL']));
+			$UrlsToSave  = htmlspecialchars(json_encode($_POST['my_image_URL']));
 			
-		     echo '<input name="imagens_home" value="'.$urlsparasalvar .'" style="width:300px"/>';
+		     echo '<input name="imagens_home" value="'.$UrlsToSave .'" style="width:300px"/>';
 		}	
  }
  
